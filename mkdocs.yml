@@ -1,0 +1,10 @@
+site_name: Phrasa Documentation
+
+nav:
+    - Getting Started: quickstart_sketch.md
+    - Concepts: concepts.md
+theme: 
+    name: material
+markdown_extensions:
+  - pymdownx.highlight:
+      linenums: true

@@ -1,12 +1,12 @@
-Phrases
---------
+# Concepts
+
+## Phrases
 
 In traditional music theory, a phrase is a semi-abstract term that defines a period of time within a piece that can be perceived by the listener as a whole unit.
 Phrasa build upon the traditional definition and extend into a much more abstract form.
 In Phrasa, a musical piece is by itself a single phrase, that is made out of multiple phrases that are made from more phrases and so on.
 
-Ratios
-------
+## Ratios
 
 Phrases durations are perceived in relation to each other. The relative durations of the phrases helps the listener to keep up with the piece, and build upon it's expectations. In phrasa we describe the length of a phrase as a ratio with relation to it's father phrase. By defining  with length property of a phrase is defined relatively to its parent, for example '/4' or 'X2'.
 If the phrase contains inner phrases, the actual length will be the sum of them all multiiplied by it's own length.
@@ -16,8 +16,7 @@ A phrase with the length of 2, containing 3 phrases of 1/4, will end up with the
 
 
 
-Phrasa Expression
-------------------
+## Phrasa Expression
 
 Everything in Phrasa is either a value, a list of values or an expression.
 A value is defined in a single word without spaces. for example `beat`, `140bpm` or `1/4`.

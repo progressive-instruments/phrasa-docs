@@ -1,11 +1,13 @@
-This quickstart guide is intended to give you an overview over the capabilities of Phrasa. If you feel confused at some part, don't worry, In the next 'Concepts' section we will start right at the beginning.
+# Getting Started
 
-#### Hello Sound
+This getting started session is intended to give you an overview over the capabilities of Phrasa. If you feel confused at some part, don't worry, In the next 'Concepts' section we will start right at the beginning.
+
+### Hello Sound
 
 So let's stop talking and play some sounds.
 
 Open 'Phrasa Control', type the following text and press on 'space'
-``` Phrasa
+``` phrasa
 tempo 102bpm
 saw-synth.event
   frequency 440
@@ -18,7 +20,7 @@ Let's open up the text.
 the first expression is `tempo 120bpm`. which assigns the value '120bpm' to the subject 'tempo'. The subject and the value are seperated with space.
 
 Then we have this expression: 
-```
+``` python
 saw-synth.event
   frequency 440
   end 50%
@@ -31,11 +33,11 @@ Here, the subject 'saw-synth.event' is separated from the values (`frequency 440
 
 To short things up we can replace the expression subject 'saw-synth.event' with 'saw-synth~'
 
-#### Phrasing
+### Phrasing
 
 Let's make things slightly more interesting, let's add some more notes to be played:
 
-``` Phrasa
+``` phrasa
 tempo 135bpm
 phrases.1.saw-synth~.note C3
 phrases.2.saw-synth~.note D3
@@ -59,12 +61,12 @@ Lastly we can make it shorter by replacing every `pharses.X` with `>X`, for exam
 
 
 
-#### Harmony
+### Harmony
 
-The power of Phrasa is within it's relative nature. Instead of working hard and repeating yourself, you define things more generally, and then set events in relation to its phrase context.
+The 1st power of Phrasa is within it's relative nature. Instead of working hard and repeating yourself, you define things more generally, and then set events in relation to its phrase context.
 Let's explore this with pitch and rewrite our previous code:
 
-``` Phrasa
+``` phrasa
 tempo 135bpm
 >1 beat
 
@@ -91,63 +93,108 @@ We are setting now the property `pitch` which will be relative to the pitch grid
 The value of the pitch is the relative offset from the pitch zone within the pitch grid that are defined in the phrase context.
 For this example '0' will be the closest note to b3 within the defined grid, which is b3. '1' is the note after it and '-2' is 2 notes before it
 
-#### Reusing Patterns
+### Reusing Patterns
 
-```Phrasa
-tempo 120bpm
+Repetition is probably the most notable element in the experience of music. Its right there within the physical nature of every periodic sound. Without repetition, music is just random sound, aka noise. 
+Phrasa allows you to reuse musical elements within your piece and variate them. It's all about the phrases:
+**(work on this)**
+
+``` phrasa
+tempo 131bpm
+
+pitch
+  grid (scale g-maj)
+  zone g3
+  
+>1.>1 beat
 >1-4
-  >#.$notes 
-    1 D4,E4,F4
-    2 F4,E4,G4
-  >1-2.>1-4
-    beat
-    saw-synth~.note ($notes >)
->4.>2.>total 3
+  >1-4.>#.lead~.pitch 
+    1 -1
+    2 0
+    4 1
+  >#.>3.bass~.pitch
+    1 0
+    2 1
+>4.pitch
+  grid (scale g-maj)
+  zone a2
 ```
 
-#### Sequencing
+The `>1-4` expression is used to define the phrases 1,2,3 and 4 with the same properties. Each phrase consists of 16 inner phrases, and some are assigned with events.
 
-```Phrasa
-tempo 120bpm
->1 beat
-sequences.notes D4,E4,F4
->1-8
-  saw-synth~.note (sequences.notes >)
+
+### Sequencing
+
+Until now we played with musical elements that are based on the concepts of hierarchy and repetition. Another essential musical element is events sequencing - events that follow one another in a sequence:
+
+``` phrasa
+tempo 125bpm
+
+pitch
+  grid (scale g-maj)
+  zone g3
+  
+sequences.ascending 1,3,4,5,7
+>1-4
+  beat
+  >1-4.saw-synth~.pitch (sequences.ascending +)
+
+>4.pitch.grid (scale d-maj)
 ```
 
-#### Multiple Instruments
+In the expression `sequences.ascending 1,3,4,5,7`  we define a sequence by the name 'ascending' with some values. 
+
+In line 10 we assign the value `(sequences.ascending >)` to the pitch of all events. Each of the events defined with this expression, will get the next value (specified by the symbol '+') of the sequence.
+
+### Multiple Instruments
+
+The last piece of the puzzle is having multiple instruments, playing together. For this we are going to use 'branches'. Also to make it more readable and manageable we're gonna write down the piece in multiple files:
 
 `cool.piece`
 
-```Phrasa
-tempo 120bpm
-pitch.zone F3
->1.pitch.grid (chord e-min)
->2.pitch.grid (chord F-MAJ)
->1-2
-  branches.synth
-    $pitches 0,-1,+2
-    >1-4
-      beat
-      saw-synth~ 
-        pitch ($pitches >)
-        end 90%
-  use <drums>
+``` phrasa
+tempo 130bpm
+pitch
+  grid (scale g-maj)
+  zone g3
+
+use drums
+use bass
 ```
 `drums.motif`
 
-```Phrasa
->1-2
-  &k.>#.kick~
-    1 100%
-    2 90%
-    3 90%
-  &sn.>2.snare~ 100%
-  &cym.>2.>#.drums~ 
+``` phrasa
+branches.cymbles
+  >1-8
+    >#.drums~.sample
       1 cym1
       2 cym2
-      4 cym1
-2.&kick.>each
-  kick~.start -25% 
+branches.kicks
+  >total 16
+  >1 beat
+  >1,5,8,14.drums~
+    sample kick
+  >5,8.drums~
+    sample snare
 ```
+
+`bass.motif`
+
+``` phrasa
+branches.bass
+  sequences.ascending 1,3,4,5,7
+  >each
+    beat
+    >each.saw-synth~.pitch (sequences.ascending +)
+
+  >4.pitch.grid (scale d-maj)
+```
+
+
+
+Our final .piece file is now defining only the base pitch and the tempo.
+
+The `use` expressions are used to import the entire content of an external .motif file. 
+
+In the motif files we created 3 branches named 'cymbles', 'kicks' and 'bass'. A branch is simply a new phrase derived from the context of it's parent phrase, taking it's own path with it's own inner phrases, sequences and other things. It allows you to set events to be run in parallel to it's parent phrase.
 
