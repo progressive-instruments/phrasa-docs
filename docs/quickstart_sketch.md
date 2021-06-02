@@ -4,34 +4,35 @@ This getting started session is intended to give you an overview over the capabi
 
 ### Hello Sound
 
-So let's stop talking and play some sounds.
+Ok, let's play our first sound.
 
-Open 'Phrasa Control', type the following text and press on 'space'
+Open 'Phrasa Control', type the following text:
 ``` phrasa
 tempo 102bpm
-saw-synth.event
+beat
+lead.event
   frequency 440
-    end 50%
+  end 50%
 ```
 We defined and played the most basic Phrasa structure - a single musical phrase containing a single event playing repeatedly.
 
 Let's open up the text.
 
-the first expression is `tempo 120bpm`. which assigns the value '120bpm' to the subject 'tempo'. The subject and the value are seperated with space.
+the first expression is `tempo 120bpm`. which assigns the value `120bpm` to the subject `tempo`. The subject and the value are separated with space.
 
 Then we have this expression: 
 ``` python
-saw-synth.event
+lead.event
   frequency 440
   end 50%
 ```
-which sets an 'event' to the instrument named 'saw-synth' with the following properties:
+which sets an 'event' to the instrument named 'lead' with the following properties:
 * Frequency of 440 hertz
 * End time of 50% the phrase length.
 
-Here, the subject 'saw-synth.event' is separated from the values (`frequency 440` and `end 50%`) by multiple lines written in a higher indentation level from the subject. 
+Here, the subject 'lead.event' is separated from the values (`frequency 440` and `end 50%`) by multiple lines written in a higher indentation level from the subject. 
 
-To short things up we can replace the expression subject 'saw-synth.event' with 'saw-synth~'
+To short things up we can replace the expression subject 'lead.event' with 'lead~'
 
 ### Phrasing
 
@@ -39,18 +40,18 @@ Let's make things slightly more interesting, let's add some more notes to be pla
 
 ``` phrasa
 tempo 135bpm
-phrases.1.saw-synth~.note C3
-phrases.2.saw-synth~.note D3
-phrases.3.saw-synth~.note G3
-phrases.4.saw-synth~.note F3
+phrases.1.lead~.note C3
+phrases.2.lead~.note D3
+phrases.3.lead~.note G3
+phrases.4.lead~.note F3
 
 phrases.1 beat
 ```
 
-In lines 2-5, we define 4 musical phrases, each contains a 'saw-synth' event with a note property. 
+In lines 2-5, we define 4 musical phrases, each contains a 'lead' event with a note property. 
 A 'phrase' in Phrasa is a fixed time frame where events can occur. Each phrase can have inner 'phrases' which will be ordered one after the other.
 
-Instead of repeating the subject path 'phrases.x.saw-synth~.note' we can use the incredible selector symbol '#':
+Instead of repeating the subject path 'phrases.x.lead~.note' we can use the incredible selector symbol '#':
 
 This way we are selecting the phrase number we wish to define in the rows that follow the subject path.
 
@@ -75,7 +76,7 @@ pitch
   zone b3
 
 >total 8
->#.saw-synth~.event.pitch
+>#.lead~.event.pitch
   1 3
   4 4
   6 -3
@@ -137,7 +138,7 @@ pitch
 sequences.ascending 1,3,4,5,7
 >1-4
   beat
-  >1-4.saw-synth~.pitch (sequences.ascending +)
+  >1-4.lead~.pitch (sequences.ascending +)
 
 >4.pitch.grid (scale d-maj)
 ```
@@ -185,7 +186,7 @@ branches.bass
   sequences.ascending 1,3,4,5,7
   >each
     beat
-    >each.saw-synth~.pitch (sequences.ascending +)
+    >each.lead~.pitch (sequences.ascending +)
 
   >4.pitch.grid (scale d-maj)
 ```
