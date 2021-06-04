@@ -9,7 +9,7 @@
       
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../img/favicon.ico">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
     
     
@@ -22,6 +22,10 @@
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ab47bd">
         
       
     
@@ -48,7 +52,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="purple" data-md-color-accent="">
   
     
     <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
@@ -320,51 +324,73 @@ A phrase with the length of 2, containing 3 phrases of 1/4, will end up with the
 A value is defined in a single word without spaces. for example <code>beat</code>, <code>140bpm</code> or <code>1/4</code>.
 A list of values are multiple values seperated with , or a newline within the same indentation.
 For example <code>1, 2.4235, 3/6</code> or:</p>
-<pre><code>snare
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>snare
 kick
 drum
-</code></pre>
+</code></pre></div>
+</td></tr></table>
 <p>arrays within arrays can be defined:</p>
-<pre><code>23,(10,20),33
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>23,(10,20),33
+</code></pre></div>
+</td></tr></table>
 <p>or</p>
-<pre><code>23
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>23
 10,20
 33
-</code></pre>
+</code></pre></div>
+</td></tr></table>
 <p>An expression can be though of as a simple sentance consisting of 2 parts, a subject and an object. They can either be separated with spaces, for example:</p>
-<pre><code class="language-Phrasa">tempo 120bpm
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>tempo 120bpm
+</code></pre></div>
+</td></tr></table>
 <p>or indented in a new line:</p>
-<pre><code class="language-Phrasa">tempo
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>tempo
   120bpm
-</code></pre>
+</code></pre></div>
+</td></tr></table>
 <p>This expression sets the tempo (the subject) to 120 bpm (the object)
 The expression input can either be a value, such as above, or it can be a list of values:
 cool_sequence 10,20,10
 or:</p>
-<pre><code class="language-Phrasa">cool_sequence
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cool_sequence
   10
   20
   30
-</code></pre>
+</code></pre></div>
+</td></tr></table>
 <p>expression input can also be an expression by itself, defined in a single row by encosing with paranthesis, for example</p>
-<pre><code class="language-Phrasa">cool_event.offset (random 10%-40%)or in a new line:cool_event.offset    random 10%-40%
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cool_event.offset (random 10%-40%)or in a new line:cool_event.offset    random 10%-40%
+</code></pre></div>
+</td></tr></table>
 <p>or:</p>
-<pre><code class="language-Phrasa">cool_event.offset
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cool_event.offset
   random
     10%-40%
-</code></pre>
+</code></pre></div>
+</td></tr></table>
 <p>And of course it can also be a list of expression/values, for example:</p>
-<pre><code class="language-Phrasa">phrases.1
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>phrases.1
   pitch.grid (chord Maj-C) // an expression which defines the pitch in the 1st phrase to be around the C Major chord.
   beat // a value that defines the 1st phrase as the beat phrase
-</code></pre>
+</code></pre></div>
+</td></tr></table>
 <p>The most common type is the assignment expression which are at the core of Phrasa, functioning as instructions for updating the piece Tree.
 For example </p>
-<pre><code class="language-Phrasa">pitch.zone F3
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pitch.zone F3
+</code></pre></div>
+</td></tr></table>
 <p>Which is an assignment expression for setting the property zone within the property pitch with the note value of F3.
 An expression type </p>
                 
