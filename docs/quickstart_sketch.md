@@ -2,14 +2,16 @@
 
 This getting started session is intended to give you an overview over the capabilities of Phrasa. If you feel confused at some part, don't worry, In the next 'Concepts' section we will start right at the beginning.
 
-This guide presumes you have some minimal understanding about music and sound. If you are unfamiliar with terms like frequency, note or tempo you might want to begin with <u>Phrasa Music and Sound Cheatsheet</u>, or jump to it at any time you feel.
+This guide presumes you have some minimal understanding about music and sound. If you are unfamiliar with terms like fequency, note or tempo you might want to begin with <u>Phrasa Music and Sound Cheatsheet</u>, or jump to it at any time you feel.
 
-### Hello Sound
+
+
+## Hello Sound
 
 Ok, let's play our first sound.
 
-Open 'Phrasa Control', type the following text:
-``` phrasa
+Open 'Phrasa Control' and type the following text:
+``` phrasa linenums="1"
 tempo 102bpm
 beat
 lead.event
@@ -32,11 +34,13 @@ In this case, the expression's subject is `lead.event` and the expression's inpu
 
 To short things up we can replace the expression subject `lead.event` with `lead~`
 
-### Phrasing
+
+
+## Phrasing
 
 Let's make things slightly more interesting, adding some notes to be played:
 
-``` phrasa
+``` phrasa linenums="1"
 tempo 135bpm
 phrases.1.lead~.note C3
 phrases.2.lead~.note D3
@@ -52,7 +56,7 @@ A 'phrase' in Phrasa is a fixed time frame where events can occur. A phrase can 
 
 The code written above is quite repetitive, with 4 lines that look alike: `phrases.x.lead~.note`. We can rewrite them much more elegantly by using the incredible selector symbol '#':
 
-``` phrasa
+``` phrasa linenums="1"
 phrases.#.lead~.note
   1 C3
   2 D3
@@ -69,14 +73,16 @@ You can find anything you want to know about phrases, lengths, beat and tempo ri
 Finally again, let's make things  shorter by replacing `pharses.X` with `>X`, for example:
 `>1 beat`. 
 
-### Harmony
 
-One of Phrasa's super powers is <span style="color:blueviolet;font-size:150%">**<u>Relativity</u>**</span>. 
+
+## Harmony
+
+One of Phrasa's super powers is <span style="color:blueviolet;font-size:120%">**<u>Relativity</u>**</span>. 
 
 Instead of working hard and repeating yourself, you can define things more generally, setting up events in relation to their phrase context.
 Let's explore what we can do with relative pitch, rewriting our previous code:
 
-``` phrasa
+``` phrasa linenums="1"
 tempo 135bpm
 >1 beat
 
@@ -111,15 +117,17 @@ Let's see a few examples:
 
 '-1' will be evaluated to the note before B3 within the B minor chord - F#3.
 
-### Reusing Patterns
 
-Another super power of Phrasa is <span style="color:darkmagenta;font-size:150%">**<u>Reusability</u>**</span>.
+
+## Reusing Patterns
+
+Another super power of Phrasa is <span style="color:blueviolet;font-size:120%">**<u>Reusability</u>**</span>.
 
 Repetition is probably the most notable element of music composition. It's right there within the physical nature of every periodic sound. Without repetition, music is just random sound, or more technically - noise. 
 
 Phrasa allows you to reuse musical elements within your piece and make variations over them - It's all about them phrases:
 
-``` phrasa
+``` phrasa linenums="1"
 tempo 127bpm
 
 pitch
@@ -144,18 +152,20 @@ By setting multiple phrases collectively, we are keeping all their shared proper
 
 Check out the diagram below, representing the resulted phrases (the vertical lines) and events (the yellow rectangles):
 
-![](C:\Users\erez\Downloads\Blank diagram (2).png)
+![](img/reusability_example.png)
 
 Imagine how hard you had to work writing these events one by one, and how hard you'd work if you wanted to change them. This is the true power of reusability.
 
 
-### Sequencing
+
+
+## Sequencing
 
 Until now we have played with musical elements based on the concepts of hierarchy and repetition. What we're still missing is usage of the most fundamental concept of perceiving time - **continuity**, the phenomenon of things changing in a sequential manner.
 
 So what's Phrasa take on it? Sequences!
 
-``` phrasa
+``` phrasa linenums="1"
 tempo 125bpm
 
 pitch
@@ -174,11 +184,13 @@ The expression `sequences.ascending 1,3,4,5,7`  (line 7) defines a sequence of v
 
 In line 10 we assign the expression `(sequences.ascending >)` to the the property `pitch`. Each of the events assigned to this expression, will increment the sequence position by one (as indicated by the symbol `>`) and use the current value of the sequence.
 
-Here is an illustration of the outcome:![](C:\Users\erez\Downloads\Phrasa Doc Example 2.png)
+Here is an illustration of the outcome:![](img/sequencing_example.png)
 
 `sequences.X` subjects can be shorten to `$X`.
 
-### Multiple Instruments
+
+
+## Multiple Instruments
 
 <span style="color:red">**<u>Not supported</u>**</span>.
 
@@ -186,7 +198,7 @@ So we had all these cool stuff with a single instrument, so let's branch out and
 
 Also, to make our code more readable and manageable we're gonna write down the piece in multiple files:
 
-``` phrasa
+``` phrasa linenums="1"
 tempo 130bpm
 pitch
   grid (scale g-maj)
@@ -199,7 +211,7 @@ use bass
 
 
 
-``` phrasa
+``` phrasa linenums="1"
 branches.cymbles
   >1-8
     >#.drums~.sample
@@ -218,7 +230,7 @@ branches.kicks
 
 
 
-``` phrasa
+``` phrasa linenums="1"
 branches.bass
   $ascending 1,3,4,5,7
   >1-4

@@ -5,6 +5,10 @@ nav:
     - Concepts: concepts.md
 theme: 
     name: material
+    favicon: img/favicon.ico
+    palette:
+        primary: 'purple'
 markdown_extensions:
+  - pymdownx.superfences
   - pymdownx.highlight:
       linenums: true
