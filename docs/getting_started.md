@@ -2,7 +2,7 @@
 
 This getting started session is intended to give you an overview over the capabilities of Phrasa. If you feel confused at some part, don't worry, In the next 'Concepts' section we will start right at the beginning.
 
-This guide presumes you have some minimal understanding about music and sound. If you are unfamiliar with terms like fequency, note or tempo you might want to begin with <u>Phrasa Music and Sound Cheatsheet</u>, or jump to it at any time you feel.
+This guide presumes you have some minimal understanding about music and sound. If you are unfamiliar with terms like frequency, note or tempo you might want to begin with <u>Phrasa Music and Sound Cheatsheet</u>, or jump to it at any time you feel.
 
 
 
@@ -22,7 +22,7 @@ We defined and played the most basic Phrasa structure - a single musical phrase 
 
 Now let's open up the text.
 
-The first expression is `tempo 120bpm` assigns the value `120bpm` to the subject `tempo`. The subject and the value are separated with space.
+The first expression is `tempo 102bpm` assigns the value `102bpm` to the subject `tempo`. The subject and the value are separated with space.
 
 The second line is `beat` which I'll explain in the next section.
 
@@ -212,7 +212,7 @@ use bass
 
 
 ``` phrasa linenums="1"
-branches.cymbles
+branches.cymbals
   >1-8
     >#.drums~.sample
       1 cym1
@@ -248,5 +248,5 @@ The main file of this piece is `cool.piece` which defines the base pitch and tem
 
 The `use` expressions import the entire content of an external .motif file. 
 
-In the motif files we created 3 branches: `cymbles`, `kicks` and `bass`. A branch is a new phrase derived from the context of it's parent phrase, taking it's own path with it's own inner phrases, sequences and other things. It gives you the freedom to create multiple parallel structures and define events within each of them.
+In the motif files we created 3 branches: `cymbals`, `kicks` and `bass`. A branch is a new phrase derived from the context of it's parent phrase, taking it's own path with it's own inner phrases, sequences and other things. It gives you the freedom to create multiple parallel structures and define events within each of them.
 

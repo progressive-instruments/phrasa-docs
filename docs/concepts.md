@@ -1,5 +1,7 @@
 # Concepts
 
+
+
 ## Phrases
 
 In traditional music theory, a phrase is a semi-abstract term that defines a period of time within a piece that can be perceived by the listener as a whole unit.
