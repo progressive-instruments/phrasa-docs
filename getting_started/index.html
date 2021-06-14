@@ -352,7 +352,7 @@
                 
                 <h1 id="getting-started">Getting Started</h1>
 <p>This getting started session is intended to give you an overview over the capabilities of Phrasa. If you feel confused at some part, don't worry, In the next 'Concepts' section we will start right at the beginning.</p>
-<p>This guide presumes you have some minimal understanding about music and sound. If you are unfamiliar with terms like fequency, note or tempo you might want to begin with <u>Phrasa Music and Sound Cheatsheet</u>, or jump to it at any time you feel.</p>
+<p>This guide presumes you have some minimal understanding about music and sound. If you are unfamiliar with terms like frequency, note or tempo you might want to begin with <u>Phrasa Music and Sound Cheatsheet</u>, or jump to it at any time you feel.</p>
 <h2 id="hello-sound">Hello Sound</h2>
 <p>Ok, let's play our first sound.</p>
 <p>Open 'Phrasa Control' and type the following text:
@@ -369,7 +369,7 @@ lead.event
 </td></tr></table>
 We defined and played the most basic Phrasa structure - a single musical phrase containing a single event playing repeatedly.</p>
 <p>Now let's open up the text.</p>
-<p>The first expression is <code>tempo 120bpm</code> assigns the value <code>120bpm</code> to the subject <code>tempo</code>. The subject and the value are separated with space.</p>
+<p>The first expression is <code>tempo 102bpm</code> assigns the value <code>102bpm</code> to the subject <code>tempo</code>. The subject and the value are separated with space.</p>
 <p>The second line is <code>beat</code> which I'll explain in the next section.</p>
 <p>Next we have a 3 lines expression that assign a musical <code>event</code> to an instrument by the name of <code>lead</code> with the following properties:
 * Frequency of 440 hertz
@@ -556,7 +556,7 @@ use bass
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>branches.cymbles
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>branches.cymbals
   &gt;1-8
     &gt;#.drums~.sample
       1 cym1
@@ -589,7 +589,7 @@ branches.kicks
 <p><code>bass.motif</code></p>
 <p>The main file of this piece is <code>cool.piece</code> which defines the base pitch and tempo.</p>
 <p>The <code>use</code> expressions import the entire content of an external .motif file. </p>
-<p>In the motif files we created 3 branches: <code>cymbles</code>, <code>kicks</code> and <code>bass</code>. A branch is a new phrase derived from the context of it's parent phrase, taking it's own path with it's own inner phrases, sequences and other things. It gives you the freedom to create multiple parallel structures and define events within each of them.</p>
+<p>In the motif files we created 3 branches: <code>cymbals</code>, <code>kicks</code> and <code>bass</code>. A branch is a new phrase derived from the context of it's parent phrase, taking it's own path with it's own inner phrases, sequences and other things. It gives you the freedom to create multiple parallel structures and define events within each of them.</p>
                 
               
               
