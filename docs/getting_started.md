@@ -1,14 +1,22 @@
 # Getting Started
 
-This getting started session is intended to give you an overview over the capabilities of Phrasa. If you feel confused at some part, don't worry, In the next 'Concepts' section we will start right at the beginning.
+This getting started session is intended to demonstrate what you can do with Phrasa, without getting too deep into syntax and terms. If you feel confused at some part, don't worry, In the next 'Concepts' section we will start right at the beginning.
 
-This guide presumes you have some minimal understanding about music and sound. If you are unfamiliar with terms like frequency, note or tempo you might want to begin with <u>Phrasa Music and Sound Cheatsheet</u>, or jump to it at any time you feel.
+This guide presumes you have a minimal understanding about music and sound. If you are unfamiliar with terms like frequency, note or tempo you might want to begin with <u>Phrasa Music & Sound Cheatsheet</u>, or jump to it at any time you feel.
+
+
+
+## Installation
+
+Before we begin, you can download and install Phrasa Control from [here](https://github.com/progressive-instruments/phrasa-control/releases/download/v0.1.0/phrasa-control-v0.1.0-win64.zip).
+
+<u>Note, this is a very limited, experimental and unmatured version of Phrasa Control - expect great things to come in the very near future.</u>
 
 
 
 ## Hello Sound
 
-Ok, let's play our first sound.
+Ok, let's play the first sound.
 
 Open 'Phrasa Control' and type the following text:
 ``` phrasa linenums="1"
@@ -20,17 +28,13 @@ lead.event
 ```
 We defined and played the most basic Phrasa structure - a single musical phrase containing a single event playing repeatedly.
 
-Now let's open up the text.
+The first expression `tempo 102bpm` sets `tempo` to `102bpm`.
 
-The first expression is `tempo 102bpm` assigns the value `102bpm` to the subject `tempo`. The subject and the value are separated with space.
+The second line `beat` will make more sense in the next section.
 
-The second line is `beat` which I'll explain in the next section.
-
-Next we have a 3 lines expression that assign a musical `event` to an instrument by the name of `lead` with the following properties:
+Then we have an expression that assign a musical `event` to the instrument by the name `lead` with the following properties:
 * Frequency of 440 hertz
 * End time of 50% the phrase length.
-
-In this case, the expression's subject is `lead.event` and the expression's input are 2 other expressions `frequency 440` and `end 50%`, separated from the subject by a new line and a higher indentation level. 
 
 To short things up we can replace the expression subject `lead.event` with `lead~`
 
@@ -50,11 +54,13 @@ phrases.4.lead~.note F3
 phrases.1 beat
 ```
 
-In lines 2-5, we defined 4 musical phrases, each contains an event to be sent to the instrument`lead` with the property `note`. 
+In lines 2-5, we divide the piece into 4 musical phrases, each contains an event to be sent to the instrument`lead` with the property `note`. This is how our piece is divided:
 
-A 'phrase' in Phrasa is a fixed time frame where events can occur. A phrase can have inner phrases  ordered one after the other.
+<img src="img/phrasing.png" style="zoom:85%;" />
 
-The code written above is quite repetitive, with 4 lines that look alike: `phrases.x.lead~.note`. We can rewrite them much more elegantly by using the incredible selector symbol '#':
+A 'phrase' is a fixed time frame where events can occur. Every phrase can be divided into inner phrases.
+
+To make the code above a bit more elegant we can use the mighty selector symbol - #:
 
 ``` phrasa linenums="1"
 phrases.#.lead~.note
@@ -64,23 +70,18 @@ phrases.#.lead~.note
   4 F4
 ```
 
-This way we are selecting the phrase number we wish to define in the rows that follow the full subject path.
+The final expression `phrases.1 beat` defines the first phrase as the beat length of the piece (see picture above). This basically means that tempo (in this case 135 beats per minute) will be relative to the duration of this phrase.
 
-the final expression `phrases.1 beat` defines the beat of the piece to be relative to the duration of the 1st phrase. This basically means that tempo (in this case 135 beats per minute) will be relative to the duration of the first phrase.
-
-You can find anything you want to know about phrases, lengths, beat and tempo right <u>here</u>.  
-
-Finally again, let's make things  shorter by replacing `pharses.X` with `>X`, for example:
+Finally again, let's make things  shorter by replacing the expressions `pharses.X` with `>X`, for example:
 `>1 beat`. 
 
 
 
 ## Harmony
 
-One of Phrasa's super powers is <span style="color:blueviolet;font-size:120%">**<u>Relativity</u>**</span>. 
+The 1st Phrasa super power is <span style="color:blueviolet;font-size:120%">**<u>Relativity</u>**</span>. 
 
-Instead of working hard and repeating yourself, you can define things more generally, setting up events in relation to their phrase context.
-Let's explore what we can do with relative pitch, rewriting our previous code:
+In this example, instead of writing down the actual note as we did before, we can write the offset in relation to its harmonic context:
 
 ``` phrasa linenums="1"
 tempo 135bpm
@@ -97,35 +98,27 @@ pitch.zone b3
   7 0
 ```
 
-In lines 4-5 we defined the pitch base for our root phrase.
+Lines 4-5 define the harmonic context.
 
-`pitch.grid` defines the set of notes to be played, in this case any note related to the chord 'B minor'.
+`pitch.grid` defines the set of notes, in this case 'B minor' chord in all octaves.
 
-`pitch.zone` defines the absolute base position over the frequency range. In this case, pitch will be relative to b3 - the note 'B' in the 3rd octave.
+`pitch.zone` defines the initial position within the grid. In this case, the note 'B' in the 3rd octave.
 
-The expression `>total 8` sets the number of phrases to 8. If this property is not set, the last phrase that was assigned will be the last phrase (in this case 7).  
+The expression `>total 8` sets the total number of phrases to 8 (if this property is not set, total phrases will be equal to the last phrase assigned)
 
 In lines 9-13 we set events for phrases 1,4,6 and 7.
 
-The assigned property for all events is `pitch` which defines the pitch offset relative to the pitch grid and zone that were defined in the phrase context.
-
-Let's see a few examples:
-
-'0' will be evaluated to the closest note to the pitch zone (B in the 3rd octave) within the pitch grid (B minor chord) - B3.
-
-'1' will be evaluated to the note after B3 within the B minor chord - D4.
-
-'-1' will be evaluated to the note before B3 within the B minor chord - F#3.
+The value of `pitch` defines the offset within the previously defined harmonic context.
 
 
 
 ## Reusing Patterns
 
-Another super power of Phrasa is <span style="color:blueviolet;font-size:120%">**<u>Reusability</u>**</span>.
+The 2nd Phrasa super power is <span style="color:blueviolet;font-size:120%">**<u>Reusability</u>**</span>.
 
-Repetition is probably the most notable element of music composition. It's right there within the physical nature of every periodic sound. Without repetition, music is just random sound, or more technically - noise. 
+Repetition is probably the most notable element of music. It's right there within the physical nature of every periodic sound. Music without repetition is just random sound, or more technically - noise. 
 
-Phrasa allows you to reuse musical elements within your piece and make variations over them - It's all about them phrases:
+In Phrasa you can define multiple phrases in a single expression: `phrases.x-y` or `phrases.x,y`, and then make variations over them:
 
 ``` phrasa linenums="1"
 tempo 127bpm
@@ -146,24 +139,22 @@ pitch
 >3-4.pitch.grid (chord g-maj)
 ```
 
-Here, by using the subject `>1-4` (lines 7 and 9), we assign some properties to phrases 1 to 4 in a single expression. Later in lines 12-14 we variate the properties for phrases 1.3 and 2.3. 
-
 By setting multiple phrases collectively, we are keeping all their shared properties in one place. This will make our piece much more flexible.
 
-Check out the diagram below, representing the resulted phrases (the vertical lines) and events (the yellow rectangles):
+Here is a diagram that illustrates the resulted phrases and and events:
 
 ![](img/reusability_example.png)
 
-Imagine how hard you had to work writing these events one by one, and how hard you'd work if you wanted to change them. This is the true power of reusability.
+Imagine how hard you had to work writing these events one by one, and even harder if you wanted to make a change. This is the power of reusability.
 
 
 
 
 ## Sequencing
 
-Until now we have played with musical elements based on the concepts of hierarchy and repetition. What we're still missing is usage of the most fundamental concept of perceiving time - **continuity**, the phenomenon of things changing in a sequential manner.
+Until now we have played with musical elements based on the concepts of hierarchy and repetition. Now let's play with another fundamental concept of perceiving time - **continuity**.
 
-So what's Phrasa take on it? Sequences!
+For this we have our old pal - the sequencer:
 
 ``` phrasa linenums="1"
 tempo 125bpm
@@ -180,13 +171,13 @@ sequences.ascending 1,3,4,5,7
 >4.pitch.grid (scale d-maj)
 ```
 
-The expression `sequences.ascending 1,3,4,5,7`  (line 7) defines a sequence of values by the name `ascending`. 
+In line 7 we defines a sequence of values by the name `ascending`. 
 
 In line 10 we assign the expression `(sequences.ascending >)` to the the property `pitch`. Each of the events assigned to this expression, will increment the sequence position by one (as indicated by the symbol `>`) and use the current value of the sequence.
 
 Here is an illustration of the outcome:![](img/sequencing_example.png)
 
-`sequences.X` subjects can be shorten to `$X`.
+The subject `sequences.name` can be shorten to `$name`.
 
 
 
