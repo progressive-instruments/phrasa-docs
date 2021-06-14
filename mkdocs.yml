@@ -1,6 +1,7 @@
 site_name: Phrasa Documentation
 
 nav:
+    - What is Phrasa?: index.md
     - Getting Started: getting_started.md
     - Concepts: concepts.md
 theme: 
