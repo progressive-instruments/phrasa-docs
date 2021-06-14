@@ -221,6 +221,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#hello-sound" class="md-nav__link">
     Hello Sound
   </a>
@@ -311,6 +318,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#hello-sound" class="md-nav__link">
     Hello Sound
   </a>
@@ -366,10 +380,13 @@
                 
                 
                 <h1 id="getting-started">Getting Started</h1>
-<p>This getting started session is intended to give you an overview over the capabilities of Phrasa. If you feel confused at some part, don't worry, In the next 'Concepts' section we will start right at the beginning.</p>
-<p>This guide presumes you have some minimal understanding about music and sound. If you are unfamiliar with terms like frequency, note or tempo you might want to begin with <u>Phrasa Music and Sound Cheatsheet</u>, or jump to it at any time you feel.</p>
+<p>This getting started session is intended to demonstrate what you can do with Phrasa, without getting too deep into syntax and terms. If you feel confused at some part, don't worry, In the next 'Concepts' section we will start right at the beginning.</p>
+<p>This guide presumes you have a minimal understanding about music and sound. If you are unfamiliar with terms like frequency, note or tempo you might want to begin with <u>Phrasa Music &amp; Sound Cheatsheet</u>, or jump to it at any time you feel.</p>
+<h2 id="installation">Installation</h2>
+<p>Before we begin, you can download and install Phrasa Control from <a href="https://github.com/progressive-instruments/phrasa-control/releases/download/v0.1.0/phrasa-control-v0.1.0-win64.zip">here</a>.</p>
+<p><u>Note, this is a very limited, experimental and unmatured version of Phrasa Control - expect great things to come in the very near future.</u></p>
 <h2 id="hello-sound">Hello Sound</h2>
-<p>Ok, let's play our first sound.</p>
+<p>Ok, let's play the first sound.</p>
 <p>Open 'Phrasa Control' and type the following text:
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -383,13 +400,11 @@ lead.event
 </code></pre></div>
 </td></tr></table>
 We defined and played the most basic Phrasa structure - a single musical phrase containing a single event playing repeatedly.</p>
-<p>Now let's open up the text.</p>
-<p>The first expression is <code>tempo 102bpm</code> assigns the value <code>102bpm</code> to the subject <code>tempo</code>. The subject and the value are separated with space.</p>
-<p>The second line is <code>beat</code> which I'll explain in the next section.</p>
-<p>Next we have a 3 lines expression that assign a musical <code>event</code> to an instrument by the name of <code>lead</code> with the following properties:
+<p>The first expression <code>tempo 102bpm</code> sets <code>tempo</code> to <code>102bpm</code>.</p>
+<p>The second line <code>beat</code> will make more sense in the next section.</p>
+<p>Then we have an expression that assign a musical <code>event</code> to the instrument by the name <code>lead</code> with the following properties:
 * Frequency of 440 hertz
 * End time of 50% the phrase length.</p>
-<p>In this case, the expression's subject is <code>lead.event</code> and the expression's input are 2 other expressions <code>frequency 440</code> and <code>end 50%</code>, separated from the subject by a new line and a higher indentation level. </p>
 <p>To short things up we can replace the expression subject <code>lead.event</code> with <code>lead~</code></p>
 <h2 id="phrasing">Phrasing</h2>
 <p>Let's make things slightly more interesting, adding some notes to be played:</p>
@@ -408,9 +423,10 @@ phrases.4.lead~.note F3
 phrases.1 beat
 </code></pre></div>
 </td></tr></table>
-<p>In lines 2-5, we defined 4 musical phrases, each contains an event to be sent to the instrument<code>lead</code> with the property <code>note</code>. </p>
-<p>A 'phrase' in Phrasa is a fixed time frame where events can occur. A phrase can have inner phrases  ordered one after the other.</p>
-<p>The code written above is quite repetitive, with 4 lines that look alike: <code>phrases.x.lead~.note</code>. We can rewrite them much more elegantly by using the incredible selector symbol '#':</p>
+<p>In lines 2-5, we divide the piece into 4 musical phrases, each contains an event to be sent to the instrument<code>lead</code> with the property <code>note</code>. This is how our piece is divided:</p>
+<p><img src="img/phrasing.png" style="zoom:85%;" /></p>
+<p>A 'phrase' is a fixed time frame where events can occur. Every phrase can be divided into inner phrases.</p>
+<p>To make the code above a bit more elegant we can use the mighty selector symbol - #:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -422,15 +438,12 @@ phrases.1 beat
   4 F4
 </code></pre></div>
 </td></tr></table>
-<p>This way we are selecting the phrase number we wish to define in the rows that follow the full subject path.</p>
-<p>the final expression <code>phrases.1 beat</code> defines the beat of the piece to be relative to the duration of the 1st phrase. This basically means that tempo (in this case 135 beats per minute) will be relative to the duration of the first phrase.</p>
-<p>You can find anything you want to know about phrases, lengths, beat and tempo right <u>here</u>.  </p>
-<p>Finally again, let's make things  shorter by replacing <code>pharses.X</code> with <code>&gt;X</code>, for example:
+<p>The final expression <code>phrases.1 beat</code> defines the first phrase as the beat length of the piece (see picture above). This basically means that tempo (in this case 135 beats per minute) will be relative to the duration of this phrase.</p>
+<p>Finally again, let's make things  shorter by replacing the expressions <code>pharses.X</code> with <code>&gt;X</code>, for example:
 <code>&gt;1 beat</code>. </p>
 <h2 id="harmony">Harmony</h2>
-<p>One of Phrasa's super powers is <span style="color:blueviolet;font-size:120%"><strong><u>Relativity</u></strong></span>. </p>
-<p>Instead of working hard and repeating yourself, you can define things more generally, setting up events in relation to their phrase context.
-Let's explore what we can do with relative pitch, rewriting our previous code:</p>
+<p>The 1st Phrasa super power is <span style="color:blueviolet;font-size:120%"><strong><u>Relativity</u></strong></span>. </p>
+<p>In this example, instead of writing down the actual note as we did before, we can write the offset in relation to its harmonic context:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -456,20 +469,16 @@ pitch.zone b3
   7 0
 </code></pre></div>
 </td></tr></table>
-<p>In lines 4-5 we defined the pitch base for our root phrase.</p>
-<p><code>pitch.grid</code> defines the set of notes to be played, in this case any note related to the chord 'B minor'.</p>
-<p><code>pitch.zone</code> defines the absolute base position over the frequency range. In this case, pitch will be relative to b3 - the note 'B' in the 3rd octave.</p>
-<p>The expression <code>&gt;total 8</code> sets the number of phrases to 8. If this property is not set, the last phrase that was assigned will be the last phrase (in this case 7).  </p>
+<p>Lines 4-5 define the harmonic context.</p>
+<p><code>pitch.grid</code> defines the set of notes, in this case 'B minor' chord in all octaves.</p>
+<p><code>pitch.zone</code> defines the initial position within the grid. In this case, the note 'B' in the 3rd octave.</p>
+<p>The expression <code>&gt;total 8</code> sets the total number of phrases to 8 (if this property is not set, total phrases will be equal to the last phrase assigned)</p>
 <p>In lines 9-13 we set events for phrases 1,4,6 and 7.</p>
-<p>The assigned property for all events is <code>pitch</code> which defines the pitch offset relative to the pitch grid and zone that were defined in the phrase context.</p>
-<p>Let's see a few examples:</p>
-<p>'0' will be evaluated to the closest note to the pitch zone (B in the 3rd octave) within the pitch grid (B minor chord) - B3.</p>
-<p>'1' will be evaluated to the note after B3 within the B minor chord - D4.</p>
-<p>'-1' will be evaluated to the note before B3 within the B minor chord - F#3.</p>
+<p>The value of <code>pitch</code> defines the offset within the previously defined harmonic context.</p>
 <h2 id="reusing-patterns">Reusing Patterns</h2>
-<p>Another super power of Phrasa is <span style="color:blueviolet;font-size:120%"><strong><u>Reusability</u></strong></span>.</p>
-<p>Repetition is probably the most notable element of music composition. It's right there within the physical nature of every periodic sound. Without repetition, music is just random sound, or more technically - noise. </p>
-<p>Phrasa allows you to reuse musical elements within your piece and make variations over them - It's all about them phrases:</p>
+<p>The 2nd Phrasa super power is <span style="color:blueviolet;font-size:120%"><strong><u>Reusability</u></strong></span>.</p>
+<p>Repetition is probably the most notable element of music. It's right there within the physical nature of every periodic sound. Music without repetition is just random sound, or more technically - noise. </p>
+<p>In Phrasa you can define multiple phrases in a single expression: <code>phrases.x-y</code> or <code>phrases.x,y</code>, and then make variations over them:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -503,14 +512,13 @@ pitch
 &gt;3-4.pitch.grid (chord g-maj)
 </code></pre></div>
 </td></tr></table>
-<p>Here, by using the subject <code>&gt;1-4</code> (lines 7 and 9), we assign some properties to phrases 1 to 4 in a single expression. Later in lines 12-14 we variate the properties for phrases 1.3 and 2.3. </p>
 <p>By setting multiple phrases collectively, we are keeping all their shared properties in one place. This will make our piece much more flexible.</p>
-<p>Check out the diagram below, representing the resulted phrases (the vertical lines) and events (the yellow rectangles):</p>
+<p>Here is a diagram that illustrates the resulted phrases and and events:</p>
 <p><img alt="" src="../img/reusability_example.png" /></p>
-<p>Imagine how hard you had to work writing these events one by one, and how hard you'd work if you wanted to change them. This is the true power of reusability.</p>
+<p>Imagine how hard you had to work writing these events one by one, and even harder if you wanted to make a change. This is the power of reusability.</p>
 <h2 id="sequencing">Sequencing</h2>
-<p>Until now we have played with musical elements based on the concepts of hierarchy and repetition. What we're still missing is usage of the most fundamental concept of perceiving time - <strong>continuity</strong>, the phenomenon of things changing in a sequential manner.</p>
-<p>So what's Phrasa take on it? Sequences!</p>
+<p>Until now we have played with musical elements based on the concepts of hierarchy and repetition. Now let's play with another fundamental concept of perceiving time - <strong>continuity</strong>.</p>
+<p>For this we have our old pal - the sequencer:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -536,10 +544,10 @@ sequences.ascending 1,3,4,5,7
 &gt;4.pitch.grid (scale d-maj)
 </code></pre></div>
 </td></tr></table>
-<p>The expression <code>sequences.ascending 1,3,4,5,7</code>  (line 7) defines a sequence of values by the name <code>ascending</code>. </p>
+<p>In line 7 we defines a sequence of values by the name <code>ascending</code>. </p>
 <p>In line 10 we assign the expression <code>(sequences.ascending &gt;)</code> to the the property <code>pitch</code>. Each of the events assigned to this expression, will increment the sequence position by one (as indicated by the symbol <code>&gt;</code>) and use the current value of the sequence.</p>
 <p>Here is an illustration of the outcome:<img alt="" src="../img/sequencing_example.png" /></p>
-<p><code>sequences.X</code> subjects can be shorten to <code>$X</code>.</p>
+<p>The subject <code>sequences.name</code> can be shorten to <code>$name</code>.</p>
 <h2 id="multiple-instruments">Multiple Instruments</h2>
 <p><span style="color:red"><strong><u>Not supported</u></strong></span>.</p>
 <p>So we had all these cool stuff with a single instrument, so let's branch out and have multiple instruments playing together. </p>
