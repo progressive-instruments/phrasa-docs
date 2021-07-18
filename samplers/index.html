@@ -14,7 +14,7 @@
     
     
       
-        <title>Concepts - Phrasa Documentation</title>
+        <title>Samplers - Phrasa Documentation</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#concepts" class="md-skip">
+        <a href="#samplers" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Concepts
+              Samplers
             
           </span>
         </div>
@@ -201,12 +201,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       <label class="md-nav__link" for="__nav_3">
         Instruments
@@ -234,11 +236,21 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../samplers/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Samplers
       </a>
+      
     </li>
   
 
@@ -268,35 +280,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#sections" class="md-nav__link">
-    Sections
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ratios" class="md-nav__link">
-    Ratios
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phrasa-expression" class="md-nav__link">
-    Phrasa Expression
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -308,91 +291,38 @@
               
                 
                 
-                <h1 id="concepts">Concepts</h1>
-<h2 id="sections">Sections</h2>
-<p>In traditional music theory, a phrase is a semi-abstract term that defines a period of time within a piece that can be perceived by the listener as a whole unit.
-Phrasa build upon the traditional definition and extend into a much more abstract form.
-In Phrasa, a musical piece is by itself a single phrase, that is made out of multiple phrases that are made from more phrases and so on.</p>
-<h2 id="ratios">Ratios</h2>
-<p>Phrases durations are perceived in relation to each other. The relative durations of the phrases helps the listener to keep up with the piece, and build upon it's expectations. In phrasa we describe the length of a phrase as a ratio with relation to it's father phrase. By defining  with length property of a phrase is defined relatively to its parent, for example '/4' or 'X2'.
-If the phrase contains inner phrases, the actual length will be the sum of them all multiiplied by it's own length.
-For example, if a phrase with a length of 1, contains 4 phrases of length 1/4, the final length will be 1/4 + 1/4 + 1/4 + 1/4 = 1.
-If the same phrase contains 5 phrases of length 1/4 it's final length will be 5/4.
-A phrase with the length of 2, containing 3 phrases of 1/4, will end up with the length of 3/4 X 2 = 6/4</p>
-<h2 id="phrasa-expression">Phrasa Expression</h2>
-<p>Everything in Phrasa is either a value, a list of values or an expression.
-A value is defined in a single word without spaces. for example <code>beat</code>, <code>140bpm</code> or <code>1/4</code>.
-A list of values are multiple values seperated with , or a newline within the same indentation.
-For example <code>1, 2.4235, 3/6</code> or:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>snare
-kick
-drum
-</code></pre></div>
-</td></tr></table>
-<p>arrays within arrays can be defined:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>23,(10,20),33
-</code></pre></div>
-</td></tr></table>
-<p>or</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>23
-10,20
-33
-</code></pre></div>
-</td></tr></table>
-<p>An expression can be though of as a simple sentance consisting of 2 parts, a subject and an object. They can either be separated with spaces, for example:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>tempo 120bpm
-</code></pre></div>
-</td></tr></table>
-<p>or indented in a new line:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>tempo
-  120bpm
-</code></pre></div>
-</td></tr></table>
-<p>This expression sets the tempo (the subject) to 120 bpm (the object)
-The expression input can either be a value, such as above, or it can be a list of values:
-cool_sequence 10,20,10
-or:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cool_sequence
-  10
-  20
-  30
-</code></pre></div>
-</td></tr></table>
-<p>expression input can also be an expression by itself, defined in a single row by encosing with paranthesis, for example</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cool_event.offset (random 10%-40%)or in a new line:cool_event.offset    random 10%-40%
-</code></pre></div>
-</td></tr></table>
-<p>or:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cool_event.offset
-  random
-    10%-40%
-</code></pre></div>
-</td></tr></table>
-<p>And of course it can also be a list of expression/values, for example:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>phrases.1
-  pitch.grid (chord Maj-C) // an expression which defines the pitch in the 1st phrase to be around the C Major chord.
-  beat // a value that defines the 1st phrase as the beat phrase
-</code></pre></div>
-</td></tr></table>
-<p>The most common type is the assignment expression which are at the core of Phrasa, functioning as instructions for updating the piece Tree.
-For example </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pitch.zone F3
-</code></pre></div>
-</td></tr></table>
-<p>Which is an assignment expression for setting the property zone within the property pitch with the note value of F3.
-An expression type </p>
+                <h1 id="samplers">Samplers</h1>
+<p>Phrasa provide multiple sample-based instruments, each contains a set of samples to be played.</p>
+<p>Each sampler instrument support the following event properties:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sample</td>
+<td>Sample name (based on sampler instrument type)</td>
+</tr>
+</tbody>
+</table>
+<p>Here is the list of sampler instruments:</p>
+<table>
+<thead>
+<tr>
+<th>Instrument Name</th>
+<th>Sample Names</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>drums</td>
+<td>hat-closed<br />hat-open<br />kick<br />perc-high<br />perc-low<br />ride-high<br />ride-low<br />snare<br />snare-high<br />snare-rim<br />stick<br />tome</td>
+</tr>
+</tbody>
+</table>
                 
               
               
@@ -408,6 +338,25 @@ An expression type </p>
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../synths/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Synthesizers
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
