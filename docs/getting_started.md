@@ -8,7 +8,7 @@ This guide presumes you have a minimal understanding about music and sound. If y
 
 ## Installation
 
-Before we begin, make sure you download and install 'Phrasa Control' from [here](https://github.com/progressive-instruments/phrasa-control/releases/download/v0.1.0/phrasa-control-v0.1.0-win64.zip).
+Before we begin, make sure you download and install 'Phrasa Control' from [here ](https://github.com/progressive-instruments/phrasa-docs/releases/download/v0.2.0/phrasa_control_0.2.0_win64.zip)(currently only Windows 64 bit supported).
 
 <u>**Keep in mind**</u> 
 This version of Phrasa Control is highly limited, experimental and unmatured - expect some great things to come in the very near future.
