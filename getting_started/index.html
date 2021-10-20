@@ -256,6 +256,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#more-reusing" class="md-nav__link">
+    More Reusing...
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sequencing" class="md-nav__link">
     Sequencing
   </a>
@@ -399,6 +406,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#more-reusing" class="md-nav__link">
+    More Reusing...
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sequencing" class="md-nav__link">
     Sequencing
   </a>
@@ -433,12 +447,12 @@
                 
                 
                 <h1 id="getting-started">Getting Started</h1>
-<p>This getting started session is intended to demonstrate what you can do with Phrasa, without getting too deep into syntax and terms. If you feel confused at some part, don't worry, in the next <u>Concepts</u> section we will start right at the beginning and explore Phrasa in much more detail.</p>
-<p>This guide presumes you have a minimal understanding about music and sound. If you are unfamiliar with terms like frequency, scales or tempo you might want to begin with <u>Phrasa's Music &amp; Sound Cheatsheet</u>, or jump to it at any time.</p>
+<p>This getting started session is intended to demonstrate what you can do with Phrasa, without getting too deep into syntax and terms. The <u>Concepts</u> section will soon be available to get you started right at the beginning and explore Phrasa in much more detail.</p>
+<p>This guide presumes you have a minimal understanding about music and sound. <u>Phrasa's Music &amp; Sound Cheatsheet</u> will soon be available for those who don't.</p>
 <h2 id="installation">Installation</h2>
-<p>Before we begin, make sure you download and install 'Phrasa Control' from <a href="https://github.com/progressive-instruments/phrasa-docs/releases/download/v0.2.0/phrasa_control_0.2.0_win64.zip">here </a>(currently only Windows 64 bit supported).</p>
+<p>Before we begin, make sure you download and install 'Phrasa Control' from <a href="https://www.progressive-instruments.com/phrasa">here</a>.</p>
 <p><u><strong>Keep in mind</strong></u> 
-This version of Phrasa Control is highly limited, experimental and unmatured - expect some great things to come in the very near future.</p>
+Phrasa is still work in progress, expect some great things to come in the very near future.</p>
 <h2 id="hello-sound">Hello Sound</h2>
 <p>Ok, let's play some sound.</p>
 <p>Open Phrasa Control app, type the following text and press the <img alt="" src="../img/play.png" /> button:
@@ -457,15 +471,15 @@ event
 </td></tr></table>
 We defined and played the most basic Phrasa structure - a single section containing a single event being played repeatedly.</p>
 <p>The first expression <code>tempo 102bpm</code> sets <code>tempo</code> to 120 beat per minutes.</p>
-<p>The second line <code>beat</code> defines this base section as the beat length. (it will make sense shortly).</p>
-<p>The third line defines the instrument to be played, in this case it's name is <code>plain</code>. You can try and replace it with any other synth instrument in <a href="../synths/">this list</a></p>
+<p>The second line <code>beat</code> defines this base section as the beat length. (it will make more sense shortly).</p>
+<p>The third line defines the instrument to be played, in this case it's name is <code>plain</code>. You can try and replace it with any other synth instrument from <a href="../synths/">this list</a></p>
 <p>Finally, we define a musical <code>event</code> that contains the following properties:</p>
 <ul>
 <li>Frequency of 440 hertz</li>
 <li>End time of 50% the section length.</li>
 </ul>
 <h2 id="sections">Sections</h2>
-<p>Let's make things slightly more interesting with multiple sections and musical notes:</p>
+<p>Now let's make things slightly more interesting with multiple sections and some musical notes:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -481,11 +495,11 @@ sections.4.event.note F3
 sections.1 beat
 </code></pre></div>
 </td></tr></table>
-<p>In lines 3-6, we divide the piece into 4 musical sections, each contains an event to be sent to the instrument<code>jupiter-8</code> with the property <code>note</code>. Here is an illustration of the piece sections:
+<p>In lines 3-6, we divide the piece into 4 musical sections, each contains an event to be sent to the instrument <code>jupiter-8</code> with the property <code>note</code>. Here is an illustration of the piece sections:
 <img alt="" src="../img/phrasing.png" /></p>
-<p>A 'section' is a fixed time frame where events can occur. As we'll see later, each section can be divided into more inner sections, allowing us to create an hierarchical musical structure.</p>
-<p>The final expression <code>sections.1 beat</code> defines the first section as the beat length of the piece (see the picture above). It means that the tempo (in this case 135 beats per minute) will be relative to the duration of the first section.</p>
-<p>To make our code a bit less repetitive we can use the mighty selector symbol - <code>#</code>:</p>
+<p>A 'section' is basically a fixed time frame where events can occur. As we'll see later, each section can be divided into more inner sections, allowing us to create an hierarchical musical structure.</p>
+<p>The final expression <code>sections.1 beat</code> defines the first section as the beat length of the piece (as you can see in the picture above). It means that the tempo (in this case 240 beats per minute) will be relative to the duration of the first section.</p>
+<p>We can make our code a bit less repetitive by using the holy mighty <span style="color:green">Selector</span> symbol - <code>#</code>:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -500,7 +514,7 @@ sections.#.event.note
 </code></pre></div>
 </td></tr></table>
 <h2 id="harmony">Harmony</h2>
-<p>Phrasa provides you with tools to write music with musical concepts in mind, for example <span style="color:blueviolet;font-size:120%"><strong><u>Relativity</u></strong></span> - a core abstract concept that underline chords, scales, rhythms and many other applications. </p>
+<p>Phrasa provides you with tools to write music with musical concepts in mind such as <span style="color:blueviolet;font-size:120%"><strong><u>Relativity</u></strong></span> - a core abstract concept that underline chords, scales, rhythms and many other applications. </p>
 <p>In this example, instead of writing down the actual note as we did before, we can write the offset in relation to its harmonic context:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -529,15 +543,15 @@ sections.#.event.pitch
 </td></tr></table>
 <p>Lines 4-5 define the harmonic context:</p>
 <ul>
-<li><code>pitch.grid</code> defines the set of notes, in this case 'B minor' chord in all octaves.</li>
+<li><code>pitch.grid</code> defines the set of notes, in this case 'B minor' chord in every octave.</li>
 <li><code>pitch.zone</code> defines the initial position within the grid. In this case, the note 'B' in the 3rd octave.</li>
 </ul>
-<p>The expression <code>sections.total 8</code> sets the total number of sections to 8 (if this property is not set, the total number of sections will be equal to the last section assigned)</p>
-<p>In lines 9-13 we set events for sections 1,4,6 and 7 with the property <code>pitch</code>. The value of <code>pitch</code> defines the offset within the previously defined harmonic context.</p>
+<p>The expression <code>sections.total 8</code> in line 8 sets the total number of sections to 8.</p>
+<p>In lines 9-13 we set events for sections 1,2,4 and 7 with the property <code>pitch</code>. The value of <code>pitch</code> defines the offset within the previously defined harmonic context.</p>
 <h2 id="reusing-patterns">Reusing Patterns</h2>
-<p>Another example for a core musical concept that can be manipulated with Phrasa is <span style="color:blueviolet;font-size:120%"><strong><u>Repetition</u></strong></span>. </p>
-<p>It is probably the most notable element of music, right there within the physical nature of any periodic sound. Music without repetition is just pure random sound, or more technically - noise (by itself a crucial element in music). </p>
-<p>With Phrasa you can reuse repeated elements in different ways. One way is to define multiple sections in a single expression: <code>sections.x-y</code> or <code>sections.x,y</code>, and then make variations over them:</p>
+<p>Another major element in the musical experience is <span style="color:blueviolet;font-size:120%"><strong><u>Repetition</u></strong></span>. </p>
+<p>It is probably the most notable element of music, right there within the physical nature of any periodic sound and every musical pattern. </p>
+<p>With Phrasa, you can reuse repeated elements in different ways. One way is to define multiple sections in a single expression: <code>sections.x-y</code> or <code>sections.x,y</code>, and then making variations over them:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -553,7 +567,7 @@ sections.#.event.pitch
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>tempo 127bpm
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>tempo 117bpm
 instrument jupiter-8
 pitch
   grid (chord c-maj)
@@ -571,13 +585,65 @@ sections.1-4
 sections.3-4.pitch.grid (chord g-maj)
 </code></pre></div>
 </td></tr></table>
-<p>By setting multiple sections collectively, we are keeping all their shared properties in one place and make our piece much more flexible.</p>
-<p>In this example we're using multiple sections within sections, Here is a diagram that illustrates the resulted sections and and events:</p>
+<p>By setting multiple sections collectively, we keep all their shared properties in one place and make our piece much more flexible for future modifications.</p>
+<p>In this example we're defining sections within sections, Here is a diagram that illustrates the resulted structure and and events:</p>
 <p><img alt="" src="../img/reusability_example.png" /></p>
-<p>Imagine how hard you had to work writing these events one by one, and even harder if you wanted to make a change. This is the power of reusability.</p>
+<p>Imagine how hard you had to work writing these events one by one, and even harder when you wanted to change them collectively. This is the power of reusability.</p>
+<h2 id="more-reusing">More Reusing...</h2>
+<p>Since repetition takes such a great role in music, Phrasa provides various methods for reusing musical elements. In this section we will take a look at templates. </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>tempo 127bpm
+instrument plain
+templates.cool_rhythm
+  sections.each
+    beat
+  sections.#
+    1,3
+      sections.total 4
+      sections.1,3
+        use cool_event
+    2
+      sections.1,2
+        use cool_event
+    4
+      sections.1-4
+        use cool_event
+
+sections.each
+  use cool_rhythm
+sections.#.templates.cool_event.event.note
+  1,3 c4
+  2 d4
+  4 g4
+</code></pre></div>
+</td></tr></table>
+<p>Templates are used for declaring a structure intended for a later usage</p>
+<p>Once a template is declared, you can use import it with the keyword <code>use</code> followed by the name of the template.</p>
+<p>In this example, we define a template by the name <code>cool_rhythm</code> which is using some other template named <code>cool_event</code>. This way <code>cool_event</code> can be freely predefined for every time we use <code>cool_rhythm</code>.</p>
 <h2 id="sequencing">Sequencing</h2>
-<p>We shall now explore another fundamental musical concept, tightly related to the way we perceive time - <span style="color:blueviolet;font-size:120%"><strong>Continuity</strong></span>.</p>
-<p>In order to play with continuity in music, we are going to use our good old friend - the sequencer:</p>
+<p>Let's now explore another fundamental musical concept which is all about the way we perceive time - <span style="color:blueviolet;font-size:120%"><strong>Continuity</strong></span>.</p>
+<p>This time we call a dear friend from the old days - the sequencer:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -603,9 +669,9 @@ sections.1-4
 sections.4.pitch.grid (scale d-maj)
 </code></pre></div>
 </td></tr></table>
-<p>In line 7, we define multiple values to the sequence by the name of <code>ascending</code>. </p>
-<p>In line 10 we assign the expression <code>(sequences.ascending &gt;)</code> to the the property <code>pitch</code>. Each of the events assigned to this expression, will increment the sequence position by one (as indicated by the symbol <code>&gt;</code>) and use the current value of the sequence.</p>
-<p>Here is an illustration of the outcome:<img alt="" src="../img/sequencing_example.png" /></p>
+<p>In line 7, we define a list of values to a sequence named <code>ascending</code>. </p>
+<p>In line 10 we assign the expression <code>(sequences.ascending &gt;)</code> to the the property <code>pitch</code>. Each event assigned to this expression, will use the current value of the sequence and increment the sequence position by one (as indicated by the symbol <code>&gt;</code>).</p>
+<p>Here is an illustration of the resulted events and structure:<img alt="" src="../img/sequencing_example.png" /></p>
 <h2 id="multiple-instruments">Multiple Instruments</h2>
 <p>So we've made all these super cool stuff with a single instrument, now we'll branch out and have multiple instruments play together.</p>
 <p>Also, to make our code more readable and manageable we're gonna write down the piece in multiple files. Add 2 files by clicking the  <img alt="" src="../img/plus.png" />  button and type the following text for each file:</p>
@@ -620,11 +686,11 @@ pitch
   grid (scale g-maj)
   zone g3
 
-use Phrase-1
-use Phrase-2
+use Template-1
+use Template-2
 </code></pre></div>
 </td></tr></table>
-<code>Base-Phrase</code></p>
+<code>Composition</code></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -652,7 +718,7 @@ branches.kicks
     sample snare
 </code></pre></div>
 </td></tr></table>
-<p><code>Phrase-1</code></p>
+<p><code>Template-1</code></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -670,17 +736,18 @@ branches.kicks
   sections.4.pitch.grid (scale d-maj)
 </code></pre></div>
 </td></tr></table>
-<p><code>Phrase-2</code></p>
-<p>The file <code>Base-Phrase</code> is the base section of the piece, defines the base pitch and tempo.</p>
-<p>The <code>use</code> expressions import the entire content of the 2 external <code>phrase</code> files. </p>
-<p>In the 2 phrase files we created <code>branches</code> by the names: <code>cymbals</code>, <code>kicks</code> and <code>bass</code>. </p>
+<p><code>Template-2</code></p>
+<p>The file <code>Composition</code> is the base section of the piece, defines the base pitch and tempo.</p>
+<p>The <code>use</code> expressions import the entire content of the 2 external <code>template</code> files. </p>
+<p>In the 2 template files we created <code>branches</code> by the names: <code>cymbals</code>, <code>kicks</code> and <code>bass</code>. </p>
 <p>A branch is a new section derived from the context of it's parent section, taking it's own path with it's own inner sections, sequences and other things. It gives you the freedom to create multiple parallel structures and define events within each of them.</p>
-<p>In <code>Phrase-1</code> we are using a sampler instrument by the name of <code>drums</code>. Events for sampler instruments contain the property <code>sample</code> which sets the desired sample to be played.</p>
+<p>In <code>Template-1</code> we are using a sampler instrument by the name of <code>drums</code>. Events for sampler instruments contain the property <code>sample</code> which sets the desired sample to be played.</p>
 <p>Try out and replace <code>drums</code> it with any other sampler instrument in <a href="sampler.md">this list</a></p>
 <h2 id="summarizing">Summarizing</h2>
-<p>I hope now you have a much better understanding of what can be done with Phrasa.</p>
-<p>I advise you to try and extend the examples you've seen in this tutorial, and whenever you're ready - go deeper into <u>Concepts</u>, where you'll find everything you need to know about the language.</p>
+<p>Phew... I sure hope you now have a grasp of what can be done with Phrasa.</p>
+<p>I advise you to try and play around with the examples you've seen in this tutorial. The <u>Concepts</u> section will be available soon, including all the information you require to dive in.</p>
 <p>Enjoy the ride :)</p>
+<p>Erez.</p>
                 
               
               
