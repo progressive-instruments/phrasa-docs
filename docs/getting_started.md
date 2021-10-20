@@ -1,17 +1,15 @@
 # Getting Started
 
-This getting started session is intended to demonstrate what you can do with Phrasa, without getting too deep into syntax and terms. If you feel confused at some part, don't worry, in the next <u>Concepts</u> section we will start right at the beginning and explore Phrasa in much more detail.
+This getting started session is intended to demonstrate what you can do with Phrasa, without getting too deep into syntax and terms. The <u>Concepts</u> section will soon be available to get you started right at the beginning and explore Phrasa in much more detail.
 
-This guide presumes you have a minimal understanding about music and sound. If you are unfamiliar with terms like frequency, scales or tempo you might want to begin with <u>Phrasa's Music & Sound Cheatsheet</u>, or jump to it at any time.
-
-
+This guide presumes you have a minimal understanding about music and sound. <u>Phrasa's Music & Sound Cheatsheet</u> will soon be available for those who don't.
 
 ## Installation
 
-Before we begin, make sure you download and install 'Phrasa Control' from [here ](https://github.com/progressive-instruments/phrasa-docs/releases/download/v0.2.0/phrasa_control_0.2.0_win64.zip)(currently only Windows 64 bit supported).
+Before we begin, make sure you download and install 'Phrasa Control' from [here](https://www.progressive-instruments.com/phrasa).
 
 <u>**Keep in mind**</u> 
-This version of Phrasa Control is highly limited, experimental and unmatured - expect some great things to come in the very near future.
+Phrasa is still work in progress, expect some great things to come in the very near future.
 
 
 
@@ -32,9 +30,9 @@ We defined and played the most basic Phrasa structure - a single section contain
 
 The first expression `tempo 102bpm` sets `tempo` to 120 beat per minutes.
 
-The second line `beat` defines this base section as the beat length. (it will make sense shortly).
+The second line `beat` defines this base section as the beat length. (it will make more sense shortly).
 
-The third line defines the instrument to be played, in this case it's name is `plain`. You can try and replace it with any other synth instrument in [this list](synths.md)
+The third line defines the instrument to be played, in this case it's name is `plain`. You can try and replace it with any other synth instrument from [this list](synths.md)
 
 Finally, we define a musical `event` that contains the following properties:
 
@@ -45,7 +43,7 @@ Finally, we define a musical `event` that contains the following properties:
 
 ## Sections
 
-Let's make things slightly more interesting with multiple sections and musical notes:
+Now let's make things slightly more interesting with multiple sections and some musical notes:
 
 ``` phrasa linenums="1"
 tempo 240bpm
@@ -57,14 +55,14 @@ sections.4.event.note F3
 sections.1 beat
 ```
 
-In lines 3-6, we divide the piece into 4 musical sections, each contains an event to be sent to the instrument`jupiter-8` with the property `note`. Here is an illustration of the piece sections:
+In lines 3-6, we divide the piece into 4 musical sections, each contains an event to be sent to the instrument `jupiter-8` with the property `note`. Here is an illustration of the piece sections:
 ![](img/phrasing.png)
 
-A 'section' is a fixed time frame where events can occur. As we'll see later, each section can be divided into more inner sections, allowing us to create an hierarchical musical structure.
+A 'section' is basically a fixed time frame where events can occur. As we'll see later, each section can be divided into more inner sections, allowing us to create an hierarchical musical structure.
 
-The final expression `sections.1 beat` defines the first section as the beat length of the piece (see the picture above). It means that the tempo (in this case 135 beats per minute) will be relative to the duration of the first section.
+The final expression `sections.1 beat` defines the first section as the beat length of the piece (as you can see in the picture above). It means that the tempo (in this case 240 beats per minute) will be relative to the duration of the first section.
 
-To make our code a bit less repetitive we can use the mighty selector symbol - `#`:
+We can make our code a bit less repetitive by using the holy mighty <span style="color:green">Selector</span> symbol - `#`:
 
 ``` phrasa linenums="1"
 instrument jupiter-8
@@ -79,7 +77,7 @@ sections.#.event.note
 
 ## Harmony
 
-Phrasa provides you with tools to write music with musical concepts in mind, for example <span style="color:blueviolet;font-size:120%">**<u>Relativity</u>**</span> - a core abstract concept that underline chords, scales, rhythms and many other applications. 
+Phrasa provides you with tools to write music with musical concepts in mind such as <span style="color:blueviolet;font-size:120%">**<u>Relativity</u>**</span> - a core abstract concept that underline chords, scales, rhythms and many other applications. 
 
 In this example, instead of writing down the actual note as we did before, we can write the offset in relation to its harmonic context:
 
@@ -100,30 +98,30 @@ sections.#.event.pitch
 
 Lines 4-5 define the harmonic context:
 
-* `pitch.grid` defines the set of notes, in this case 'B minor' chord in all octaves.
+* `pitch.grid` defines the set of notes, in this case 'B minor' chord in every octave.
 * `pitch.zone` defines the initial position within the grid. In this case, the note 'B' in the 3rd octave.
 
-The expression `sections.total 8` sets the total number of sections to 8 (if this property is not set, the total number of sections will be equal to the last section assigned)
+The expression `sections.total 8` in line 8 sets the total number of sections to 8.
 
-In lines 9-13 we set events for sections 1,4,6 and 7 with the property `pitch`. The value of `pitch` defines the offset within the previously defined harmonic context.
+In lines 9-13 we set events for sections 1,2,4 and 7 with the property `pitch`. The value of `pitch` defines the offset within the previously defined harmonic context.
 
 
 
 ## Reusing Patterns
 
-Another example for a core musical concept that can be manipulated with Phrasa is <span style="color:blueviolet;font-size:120%">**<u>Repetition</u>**</span>. 
+Another major element in the musical experience is <span style="color:blueviolet;font-size:120%">**<u>Repetition</u>**</span>. 
 
-It is probably the most notable element of music, right there within the physical nature of any periodic sound. Music without repetition is just pure random sound, or more technically - noise (by itself a crucial element in music). 
+It is probably the most notable element of music, right there within the physical nature of any periodic sound and every musical pattern. 
 
-With Phrasa you can reuse repeated elements in different ways. One way is to define multiple sections in a single expression: `sections.x-y` or `sections.x,y`, and then make variations over them:
+With Phrasa, you can reuse repeated elements in different ways. One way is to define multiple sections in a single expression: `sections.x-y` or `sections.x,y`, and then making variations over them:
 
 ``` phrasa linenums="1"
-tempo 127bpm
+tempo 117bpm
 instrument jupiter-8
 pitch
   grid (chord c-maj)
   zone g4
-  
+
 sections.1-4
   sections.1 beat
   sections.1-4.sections.#.event.pitch 
@@ -136,22 +134,56 @@ sections.1-4
 sections.3-4.pitch.grid (chord g-maj)
 ```
 
-By setting multiple sections collectively, we are keeping all their shared properties in one place and make our piece much more flexible.
+By setting multiple sections collectively, we keep all their shared properties in one place and make our piece much more flexible for future modifications.
 
-In this example we're using multiple sections within sections, Here is a diagram that illustrates the resulted sections and and events:
+In this example we're defining sections within sections, Here is a diagram that illustrates the resulted structure and and events:
 
 ![](img/reusability_example.png)
 
-Imagine how hard you had to work writing these events one by one, and even harder if you wanted to make a change. This is the power of reusability.
+Imagine how hard you had to work writing these events one by one, and even harder when you wanted to change them collectively. This is the power of reusability.
 
+## More Reusing...
 
+Since repetition takes such a great role in music, Phrasa provides various methods for reusing musical elements. In this section we will take a look at templates. 
+
+```phrasa linenums="1"
+tempo 127bpm
+instrument plain
+templates.cool_rhythm
+  sections.each
+    beat
+  sections.#
+    1,3
+      sections.total 4
+      sections.1,3
+        use cool_event
+    2
+      sections.1,2
+        use cool_event
+    4
+      sections.1-4
+        use cool_event
+
+sections.each
+  use cool_rhythm
+sections.#.templates.cool_event.event.note
+  1,3 c4
+  2 d4
+  4 g4
+```
+
+Templates are used for declaring a structure intended for a later usage
+
+Once a template is declared, you can use import it with the keyword `use` followed by the name of the template.
+
+In this example, we define a template by the name `cool_rhythm` which is using some other template named `cool_event`. This way `cool_event` can be freely predefined for every time we use `cool_rhythm`.
 
 
 ## Sequencing
 
-We shall now explore another fundamental musical concept, tightly related to the way we perceive time - <span style="color:blueviolet;font-size:120%">**Continuity**</span>.
+Let's now explore another fundamental musical concept which is all about the way we perceive time - <span style="color:blueviolet;font-size:120%">**Continuity**</span>.
 
-In order to play with continuity in music, we are going to use our good old friend - the sequencer:
+This time we call a dear friend from the old days - the sequencer:
 
 ``` phrasa linenums="1"
 tempo 125bpm
@@ -168,11 +200,11 @@ sections.1-4
 sections.4.pitch.grid (scale d-maj)
 ```
 
-In line 7, we define multiple values to the sequence by the name of `ascending`. 
+In line 7, we define a list of values to a sequence named `ascending`. 
 
-In line 10 we assign the expression `(sequences.ascending >)` to the the property `pitch`. Each of the events assigned to this expression, will increment the sequence position by one (as indicated by the symbol `>`) and use the current value of the sequence.
+In line 10 we assign the expression `(sequences.ascending >)` to the the property `pitch`. Each event assigned to this expression, will use the current value of the sequence and increment the sequence position by one (as indicated by the symbol `>`).
 
-Here is an illustration of the outcome:![](img/sequencing_example.png)
+Here is an illustration of the resulted events and structure:![](img/sequencing_example.png)
 
 
 
@@ -188,10 +220,10 @@ pitch
   grid (scale g-maj)
   zone g3
 
-use Phrase-1
-use Phrase-2
+use Template-1
+use Template-2
 ```
-`Base-Phrase`
+`Composition`
 
 
 
@@ -211,7 +243,7 @@ branches.kicks
     sample snare
 ```
 
-`Phrase-1`
+`Template-1`
 
 
 
@@ -226,19 +258,19 @@ branches.bass
   sections.4.pitch.grid (scale d-maj)
 ```
 
-`Phrase-2`
+`Template-2`
 
 
 
-The file `Base-Phrase` is the base section of the piece, defines the base pitch and tempo.
+The file `Composition` is the base section of the piece, defines the base pitch and tempo.
 
-The `use` expressions import the entire content of the 2 external `phrase` files. 
+The `use` expressions import the entire content of the 2 external `template` files. 
 
-In the 2 phrase files we created `branches` by the names: `cymbals`, `kicks` and `bass`. 
+In the 2 template files we created `branches` by the names: `cymbals`, `kicks` and `bass`. 
 
 A branch is a new section derived from the context of it's parent section, taking it's own path with it's own inner sections, sequences and other things. It gives you the freedom to create multiple parallel structures and define events within each of them.
 
-In `Phrase-1` we are using a sampler instrument by the name of `drums`. Events for sampler instruments contain the property `sample` which sets the desired sample to be played.
+In `Template-1` we are using a sampler instrument by the name of `drums`. Events for sampler instruments contain the property `sample` which sets the desired sample to be played.
 
 Try out and replace `drums` it with any other sampler instrument in [this list](sampler.md)
 
@@ -246,9 +278,12 @@ Try out and replace `drums` it with any other sampler instrument in [this list](
 
 ## Summarizing
 
-I hope now you have a much better understanding of what can be done with Phrasa.
+Phew... I sure hope you now have a grasp of what can be done with Phrasa.
 
-I advise you to try and extend the examples you've seen in this tutorial, and whenever you're ready - go deeper into <u>Concepts</u>, where you'll find everything you need to know about the language.
+I advise you to try and play around with the examples you've seen in this tutorial. The <u>Concepts</u> section will be available soon, including all the information you require to dive in.
+
+
 
 Enjoy the ride :)
 
+Erez.
